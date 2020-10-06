@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Join</title>
+    <link th:replace="partials/links :: links"/>
+</head>
+<body>
+<div th:replace="partials/header :: header"></div>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<h1 th:text="${cohort}"></h1>
+
+<form action="/join" method="post">
+    <input type="text" name="cohort" id="cohort-ip" class="field" />
+    <button>Join now</button>
+</form>
+
+<div th:each="item : ${shoppingCart}">
+    <p th:text="${item}"></p>
+</div>
+
+<div class="alert alert-danger" th:if="${page_has_error}">
+    Something bad happened!<br>
+    <p th:text="${page_has_error}"></p>
+</div>
+
+<h1 style="color: blue;" th:replace="partials/testFragment.html :: my-partial">
+    This div will be *replaced* by the fragment
+</h1>
+
+<h1 style="color: red;" th:include="partials/testFragment :: my-partial">
+    The entire content of the partial will be *included* inside this div.
+</h1>
+
+<div th:replace="partials/footer_nav :: footer_nav"></div>
+<div th:replace="partials/scripts :: scripts"></div>
+</body>
+</html>

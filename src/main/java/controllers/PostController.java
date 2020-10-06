@@ -1,4 +1,4 @@
-package com.codeup.blog.controllers;
+package controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +32,4 @@ public class PostController {
     public String submitCreatePost() {
         return "create a new post";
     }
-
-
 }
