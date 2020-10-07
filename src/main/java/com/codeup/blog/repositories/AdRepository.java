@@ -1,6 +1,6 @@
-package repositories;
+package com.codeup.blog.repositories;
 
-import models.Ad;
+import com.codeup.blog.models.Ad;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,14 +12,14 @@ public interface AdRepository extends JpaRepository<Ad, Long> {
     Ad findFirstByTitle(String title); // select * from ads where title = ? limit 1
 
     // The following method is equivalent to the built in `getOne` method, there's no need to create this example
-    @Query("from Ad a where a.id like ?1")
+    @Query("FROM Ad a WHERE a.id = ?1")
     Ad getAdById(long id);
 
     // The following method shows you how to use named parameters in a HQL custom query:
-    @Query("from Ad a where a.title like %:term%")
+    @Query("FROM Ad a WHERE a.title LIKE %:term%")
     List<Ad> searchByTitleLike(@Param("term") String term);
 
     // The following method shows you how to use named parameters in a HQL custom query:
-    @Query("from Ad a where a.description like %:term%")
+    @Query("FROM Ad a WHERE a.description LIKE %:term%")
     List<Ad> searchByDescriptionLike(@Param("term") String term);
 }
