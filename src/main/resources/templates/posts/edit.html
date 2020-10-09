@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/partials :: head('Edit Post')"></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Edit a Post</title>
+    <link th:replace="partials/links :: links"/>
+</head>
 <body>
-<nav th:replace="partials/partials :: header"></nav>
-<nav th:replace="partials/partials :: navbar"></nav>
+<header th:replace="partials/header :: header"></header>
+<nav th:replace="partials/navbar :: navbar"></nav>
 
-<div class="container">
-    <h2>Edit Post</h2>
-    <form th:action="@{|/posts/${post.id}/edit|}" th:method="post" th:object="${post}">
-        <input type="hidden" th:field="*{id}"/>
-        <input type="hidden" th:field="*{user}"/>
-        <label for="title">Title: </label>
-        <input type="text" th:field="*{title}" id="title" class="field" th:value="${post.title}"/>
-        <br><br>
-        <label for="body">Body:</label><br>
-        <textarea th:field="*{body}" id="body" class="field" rows="4" cols="50" th:text="${post.body}"></textarea><br>
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-        <a href="/posts" class="btn btn-primary">BACK</a>
+<main class="container">
+    <form action="/posts/edit" method="post">
+        <input style="visibility: hidden" type="text" name="id" th:value="${post.id}"/>
+        <input style="visibility: hidden" type="text" name="fred" value="fred"/>
+        <label for="title">Enter Post Title: </label> <br>
+        <input type="text" id="title" name="title" th:value="${post.title}" /> <br>
+        <label for="body">Enter your post: </label> <br>
+        <textarea name="body" id="body" cols="72" rows="4" th:text="${post.body}"></textarea> <br>
+        <button type="submit">Submit</button>
     </form>
-</div>
+</main>
 
-<footer th:replace="partials/partials :: footer"></footer>
-<script th:replace="partials/partials :: scripts"></script>
-
+<footer th:replace="partials/footer :: footer"></footer>
+<scripts th:replace="partials/scripts :: scripts"></scripts>
 </body>
 </html>

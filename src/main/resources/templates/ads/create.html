@@ -1,14 +1,14 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Create Ad</title>
-    <div th:replace="partials/links :: links"></div>
+    <div th:replace="partials/links :: links"/>
 </head>
 <body>
-<nav th:replace="partials/navbar :: navbar"></nav>
+<header th:replace="partials/header :: header"></header>
+<nav th:replace="partials/navbar :: navbar"/>
 
 <main class="container">
     <form action="/ads/create" method="post">
@@ -20,6 +20,8 @@
     </form>
 </main>
 
-<div th:replace="partials/scripts :: scripts"></div>
+<footer th:replace="partials/footer :: footer"></footer>
+<div th:replace="partials/scripts :: scripts"/>
+</body>
 </body>
 </html>
