@@ -13,8 +13,9 @@
     <show_post th:if="${post}">
         <h1 th:text="${post.title}"></h1>
         <p th:text="${post.body}"></p>
+        <p>This post was lovingly created by one of our users. To email them, contact them at: <span th:text="${post.user.email}"></span></p>
         <br>
-        <h5 th:text="${post.user.email}"></h5>
+<!--        <h5 th:text="${post.user.email}"></h5>-->
         <form style="display: inline" th:action="@{'/ads/edit' + ${post.id}}"><button>Edit</button></form>
         <form style="display: inline" th:action="@{'/ads/delete/' + ${post.id}}"><button>Delete</button></form>
     </show_post>
