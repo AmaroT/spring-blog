@@ -10,14 +10,16 @@ import org.springframework.stereotype.Service;
 
 @Service("mailService")
 public class EmailService {
-
     @Autowired
     public JavaMailSender emailSender;
 
+//    @Value("${spring.mail.from}")
+//    private String from;
 
-    public void prepareAndSend(Ad ad, String subject, String body) {
+    public void prepareAndSend(String toEmail, String subject, String body) {
         SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo(ad.getOwner().getEmail());
+//        msg.setFrom(from);
+        msg.setTo(toEmail);
         msg.setSubject(subject);
         msg.setText(body);
         new Thread(new RunnableEmail(this, msg)).start();

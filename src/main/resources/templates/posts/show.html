@@ -7,21 +7,20 @@
 </head>
 <body>
 <div th:replace="partials/header :: header"></div>
-<nav th:replace="partials/navbar :: navbar"></nav>
+<nav th:replace="partials/navbar :: navbar"/>
 
 <main class="container">
     <show_post th:if="${post}">
-        <h1 th:text="${post.title}"></h1>
+        <h2 th:text="${post.title}"></h2>
         <p th:text="${post.body}"></p>
-        <p>This post was lovingly created by one of our users. To email them, contact them at: <span th:text="${post.user.email}"></span></p>
-        <br>
-<!--        <h5 th:text="${post.user.email}"></h5>-->
-        <form style="display: inline" th:action="@{'/ads/edit' + ${post.id}}"><button>Edit</button></form>
-        <form style="display: inline" th:action="@{'/ads/delete/' + ${post.id}}"><button>Delete</button></form>
+        <p>Email: <span th:text="${post.user.email}"></span></p>
+        <form style="display: inline" th:action="@{'/posts'}"><button>List</button></form>
+        <form style="display: inline" th:action="@{'/posts/edit/' + ${post.id}}"><button>Edit</button></form>
+        <form style="display: inline" th:action="@{'/posts/delete/' + ${post.id}}"><button>Delete</button></form>
     </show_post>
 </main>
 
-<div th:replace="partials/footer_nav :: footer_nav"></div>
-<div th:replace="partials/scripts :: scripts"></div>
+<div th:replace="partials/footer :: footer"></div>
+<div th:replace="partials/scripts :: scripts"/>
 </body>
 </html>
